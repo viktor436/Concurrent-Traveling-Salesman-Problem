@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TSP</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script th:src="@{/js/tsp.js}"></script>
+</head>
+<body>
+<div>
+    <h1>Traveling Salesman Problem</h1>
+    <canvas id="map" width="600" height="150"></canvas>
+</div>
+
+<div>
+    <form th:action="@{/generateRoute}" method="post">
+        <button type="submit">Generate New Route</button>
+    </form>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var cities = /*[[${cities}]]*/ [];
+    var currentRoute = /*[[${currentRoute}]]*/ [];
+
+    // Draw the map.
+    var canvas = document.getElementById('map');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < cities.length; i++) {
+        ctx.beginPath();
+        ctx.arc(cities[i].x, cities[i].y, 5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillText(cities[i].name, cities[i].x + 10, cities[i].y - 10);
+    }
+
+    // Draw the route.
+    ctx.beginPath();
+    ctx.moveTo(cities[currentRoute[0]].x, cities[currentRoute[0]].y);
+    for (var i = 1; i < cities.length; i++) {
+        ctx.lineTo(cities[currentRoute[i]].x, cities[currentRoute[i]].y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+    /*]]>*/
+</script>
+</body>
+</html>
