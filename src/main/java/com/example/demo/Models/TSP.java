@@ -43,7 +43,9 @@ public class TSP {
 
         public void run() {
             branchAndBound(route, level);
-            phaser.arrive();
+            if (!phaser.isTerminated()) {
+                phaser.arrive(); //error
+            }
         }
     }
 
