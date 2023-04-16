@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.Models.City;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,50 +18,81 @@ import java.util.stream.Collectors;
 @Controller
 public class TspController {
 
+    private List<City> cities = new ArrayList<>();
+//    List<City> cities = Arrays.asList(
+//            new City("New York", 20, 50),
+//            new City("Los Angeles", 50, 120),
+//            new City("Chicago", 220, 120),
+//            new City("Houston", 120, 20)
+//            //new City("Sofia", 20, 130)
+//
+//    );
+
+
+    private int[] currentRoute = {};
+
+//    @GetMapping("/")
+//    public String home(Model model) {
+//        model.addAttribute("cities", cities);
+//        model.addAttribute("currentRoute", currentRoute);
+//        return "home";
+//    }
+
+    @PostMapping("/addCity")
+    public String addCity(@RequestParam String name, @RequestParam int x, @RequestParam int y) {
+        cities.add(new City(name, x, y));
+        return "redirect:/";
+    }
     @GetMapping("/")
     public String showTsp(Model model) {
         // Define the cities and their coordinates.
-        List<City> cities = Arrays.asList(
-                new City("New York", 20, 50),
-                new City("Los Angeles", 50, 120),
-                new City("Chicago", 220, 120),
-                new City("Houston", 120, 20)
-                //new City("Sofia", 20, 130)
-
-        );
+//        List<City> cities = Arrays.asList(
+//                new City("New York", 20, 50),
+//                new City("Los Angeles", 50, 120),
+//                new City("Chicago", 220, 120),
+//                new City("Houston", 120, 20)
+//                //new City("Sofia", 20, 130)
+//
+//        );
+        if(cities.isEmpty()){
+        cities.add(new City("New York", 20, 50));
+        cities.add(new City("Los Angeles", 50, 120));
+        cities.add(new City("Chicago", 220, 120));
+        //cities.add(new City("Houston", 120, 20));
+        }
 
         // Generate a random route for the TSP.
         int[] bRoute = findBestRoute(cities);
         //List<Integer> currentRoute = generateRandomRoute(cities.size());
-        List<Integer> currentRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
-
+        //List<Integer> currentRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
+        currentRoute = bRoute;
 
         model.addAttribute("cities", cities);
         model.addAttribute("currentRoute", currentRoute);
         return "tsp";
     }
 
-    @PostMapping("/generateRoute")
-    public String generateRoute(Model model) {
-        // Define the cities and their coordinates.
-        List<City> cities = Arrays.asList(
-                new City("New York", 20, 50),
-                new City("Los Angeles", 50, 120),
-                new City("Chicago", 220, 120),
-                new City("Houston", 120, 20)
-                //new City("Sofia", 100, 30)
-                );
-
-        // Generate a new random route for the TSP.
-        List<Integer> currentRoute = generateRandomRoute(cities.size());
-        int[] bRoute = findBestRoute(cities);
-        List<Integer> bestRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
-
-
-        model.addAttribute("cities", cities);
-        model.addAttribute("currentRoute", bestRoute);
-        return "tsp :: map";
-    }
+//    @PostMapping("/generateRoute")
+//    public String generateRoute(Model model) {
+//        // Define the cities and their coordinates.
+//        List<City> cities = Arrays.asList(
+//                new City("New York", 20, 50),
+//                new City("Los Angeles", 50, 120),
+//                new City("Chicago", 220, 120),
+//                new City("Houston", 120, 20)
+//                //new City("Sofia", 100, 30)
+//                );
+//
+//        // Generate a new random route for the TSP.
+//        List<Integer> currentRoute = generateRandomRoute(cities.size());
+//        int[] bRoute = findBestRoute(cities);
+//        List<Integer> bestRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
+//
+//
+//        model.addAttribute("cities", cities);
+//        model.addAttribute("currentRoute", bestRoute);
+//        return "tsp :: map";
+//    }
 
     // Generate a random route for the TSP.
     private List<Integer> generateRandomRoute(int numCities) {
@@ -75,7 +107,6 @@ public class TspController {
     private int[] findBestRoute(List<City> cityList) {
         //List<Integer> route = new ArrayList<>();
         int[][] distances = calculateDistanceMatrix(cityList);
-        //todo: convert points to distances
         TSP tsp = new TSP(distances);
         int[] bestRoute = tsp.solve();
 

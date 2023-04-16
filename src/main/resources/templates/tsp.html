@@ -16,14 +16,32 @@
 <body>
 <div>
     <h1>Traveling Salesman Problem</h1>
-    <canvas id="map" width="600" height="400"></canvas>
+    <canvas id="map" width="600" height="150"></canvas>
 </div>
 
 <div>
-    <form th:action="@{/generateRoute}" method="post">
-        <button type="submit">Generate New Route</button>
+    <form th:action="@{/addCity}" method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>X:</label>
+            <input type="number" name="x" required>
+        </div>
+        <div>
+            <label>Y:</label>
+            <input type="number" name="y" required>
+        </div>
+        <button type="submit">Add City</button>
     </form>
 </div>
+
+<!--<div>-->
+<!--    <form th:action="@{/generateRoute}" method="post">-->
+<!--        <button type="submit">Generate New Route</button>-->
+<!--    </form>-->
+<!--</div>-->
 
 <script th:inline="javascript">
     /*<![CDATA[*/
