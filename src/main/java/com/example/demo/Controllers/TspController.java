@@ -55,10 +55,10 @@ public class TspController {
 //
 //        );
         if(cities.isEmpty()){
-        cities.add(new City("New York", 20, 50));
-        cities.add(new City("Los Angeles", 50, 120));
-        cities.add(new City("Chicago", 220, 120));
-        //cities.add(new City("Houston", 120, 20));
+        cities.add(new City("Sofia", 30, 70));
+        cities.add(new City("Sopot", 90, 80));
+        cities.add(new City("Montana", 30, 30));
+        //cities.add(new City("Burgas", 180, 90));
         }
 
         // Generate a random route for the TSP.
