@@ -39,7 +39,7 @@ public class TspController {
 
         model.addAttribute("cities", cities);
         model.addAttribute("currentRoute", currentRoute);
-        return "tsp";
+        return "index";
     }
 
 //    @PostMapping("/generateRoute")
