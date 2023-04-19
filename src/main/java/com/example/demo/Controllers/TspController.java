@@ -33,35 +33,12 @@ public class TspController {
             //cities.add(new City("Borovec", 50, 100));
             // cities.add(new City("Teteven", 70, 60));
         }
-        int[] bRoute = findBestRoute(cities);
-        //List<Integer> currentRoute = generateRandomRoute(cities.size());
-        //List<Integer> currentRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
-        currentRoute = bRoute;
+        currentRoute = findBestRoute(cities);
 
         model.addAttribute("cities", cities);
         model.addAttribute("currentRoute", currentRoute);
         return "index";
     }
-
-//    @PostMapping("/generateRoute")
-//    public String generateRoute(Model model) {
-//        List<City> cities = Arrays.asList(
-//                new City("New York", 20, 50),
-//                new City("Los Angeles", 50, 120),
-//                new City("Chicago", 220, 120),
-//                new City("Houston", 120, 20)
-//                //new City("Sofia", 100, 30)
-//                );
-//
-//        List<Integer> currentRoute = generateRandomRoute(cities.size());
-//        int[] bRoute = findBestRoute(cities);
-//        List<Integer> bestRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
-//
-//
-//        model.addAttribute("cities", cities);
-//        model.addAttribute("currentRoute", bestRoute);
-//        return "tsp :: map";
-//    }
 
     private List<Integer> generateRandomRoute(int numCities) {
         List<Integer> route = new ArrayList<>();
