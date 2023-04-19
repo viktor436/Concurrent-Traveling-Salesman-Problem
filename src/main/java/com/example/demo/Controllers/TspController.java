@@ -23,7 +23,7 @@ public class TspController {
         cities.add(new City(name, x, y));
         return "redirect:/";
     }
-    @GetMapping("/index")
+    @GetMapping("/")
     public String showTsp(Model model) {
         if(cities.isEmpty()){
         cities.add(new City("Sofia", 30, 70));
