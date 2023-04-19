@@ -25,13 +25,14 @@ public class TspController {
     }
     @GetMapping("/")
     public String showTsp(Model model) {
-        if(cities.isEmpty()){
-        cities.add(new City("Sofia", 30, 70));
-        cities.add(new City("Sopot", 90, 80));
-        cities.add(new City("Montana", 30, 30));
-        //cities.add(new City("Burgas", 180, 90));
+        if(cities.isEmpty()) {
+            cities.add(new City("Sofia", 30, 70));
+            cities.add(new City("Sopot", 90, 80));
+            cities.add(new City("Montana", 30, 30));
+            //cities.add(new City("Burgas", 180, 90));
+            //cities.add(new City("Borovec", 50, 100));
+            // cities.add(new City("Teteven", 70, 60));
         }
-
         int[] bRoute = findBestRoute(cities);
         //List<Integer> currentRoute = generateRandomRoute(cities.size());
         //List<Integer> currentRoute = Arrays.stream(bRoute).boxed().collect(Collectors.toList());
@@ -81,21 +82,6 @@ public class TspController {
         return bestRoute;
     }
 
-    public static int[][] pointsToDistances(int[][] points) {
-        int numPoints = points.length;
-        int[][] distanceMatrix = new int[numPoints][numPoints];
-
-        for (int i = 0; i < numPoints; i++) {
-            for (int j = 0; j < numPoints; j++) {
-                double deltaX = points[i][0] - points[j][0];
-                double deltaY = points[i][1] - points[j][1];
-                double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                distanceMatrix[i][j] = (int) Math.round(distance);
-            }
-        }
-
-        return distanceMatrix;
-    }
 
     public static int[][] calculateDistanceMatrix(List<City> cities) {
         int numCities = cities.size();
