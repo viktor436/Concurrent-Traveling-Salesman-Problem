@@ -26,11 +26,11 @@ public class TspController {
     @GetMapping("/")
     public String showTsp(Model model) {
         if(cities.isEmpty()) {
-            cities.add(new City("Sofia", 30, 70));
-            cities.add(new City("Sopot", 90, 80));
-            cities.add(new City("Montana", 30, 30));
+            cities.add(new City("Sofia", 80, 185));
+            cities.add(new City("Sopot", 240, 210));
+            cities.add(new City("Montana", 90, 80));
             //cities.add(new City("Burgas", 180, 90));
-            //cities.add(new City("Borovec", 50, 100));
+            //cities.add(new City("Borovec", 130, 260));
             // cities.add(new City("Teteven", 70, 60));
         }
         currentRoute = findBestRoute(cities);
