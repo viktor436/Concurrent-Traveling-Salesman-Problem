@@ -71,6 +71,7 @@ public class TSPParallel {
         for (int i = 0; i < shortestPath.length; i++) {
             System.out.print(shortestPath[i] + " ");
         }
+        System.out.println("Shortest path:distance:"+solver.calculateDistance(shortestPath));
         return shortestPath;
     }
 }
