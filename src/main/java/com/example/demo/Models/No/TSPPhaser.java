@@ -1,14 +1,14 @@
-package com.example.demo.Models;
+package com.example.demo.Models.No;
 import java.util.concurrent.Phaser;
-
-public class TSP {
+//note: not optimal solution
+public class TSPPhaser {
     private int[][] distances;
     private int numCities; //брой градове
     private int[] bestRoute;
     private int bestDistance = Integer.MAX_VALUE;
     private Phaser phaser = new Phaser(0);
 
-    public TSP(int[][] distances) {
+    public TSPPhaser(int[][] distances) {
         this.distances = distances;
         this.numCities = distances.length;
     }

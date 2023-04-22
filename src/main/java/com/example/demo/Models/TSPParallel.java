@@ -1,15 +1,9 @@
 package com.example.demo.Models;
 import java.util.concurrent.RecursiveTask;
 public class TSPParallel {
-    private static int[][] distances; // example distances matrix
+    private static int[][] distances;
     private static int numCities;
-
     int[] shortestPath;
-
-    public int[] getShortestPath() {
-        return shortestPath;
-    }
-
     public TSPParallel(int[][] distances) {
         this.distances = distances;
         numCities = distances.length;
@@ -24,7 +18,7 @@ public class TSPParallel {
 
         @Override
         protected int[] compute() {
-            if (cities.length == numCities) { // all cities visited
+            if (cities.length == numCities) {
                 return cities;
             }
 
@@ -52,7 +46,6 @@ public class TSPParallel {
                     }
                 }
             }
-
             return shortestPath;
         }
 
