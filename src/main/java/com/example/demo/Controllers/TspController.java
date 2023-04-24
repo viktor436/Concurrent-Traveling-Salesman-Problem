@@ -12,8 +12,7 @@ import java.util.List;
 
 @Controller
 public class TspController {
-    private List<City> cities = new ArrayList<>();
-    private int[] currentRoute = {};
+    private final List<City> cities = new ArrayList<>();
 
     @PostMapping("/addCity")
     public String addCity(@RequestParam String name, @RequestParam int x, @RequestParam int y) {
@@ -36,7 +35,7 @@ public class TspController {
 //            cities.add(new City("Belene,shortest path to here is a joke about Bai Tosho", 280, 80));
 
         }
-        currentRoute = findBestRoute(cities);
+        int[] currentRoute = findBestRoute(cities);
 
         model.addAttribute("cities", cities);
         model.addAttribute("currentRoute", currentRoute);
@@ -53,7 +52,6 @@ public class TspController {
         return route;
     }
     private int[] findBestRoute(List<City> cityList) throws InterruptedException {
-        List<Integer> route = new ArrayList<>();
         int[][] distances = calculateDistanceMatrix(cityList);
 
 //        TSPParallel tspSolver = new TSPParallel(distances);
