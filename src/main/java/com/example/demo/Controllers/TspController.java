@@ -28,12 +28,12 @@ public class TspController {
             cities.add(new City("Montana", 90, 80));
             cities.add(new City("Kozloduy", 180, 91));
             cities.add(new City("Borovec", 130, 260));
-            cities.add(new City("Lom", 70, 60));
-            cities.add(new City("Burgas", 490, 240));
-            cities.add(new City("Varna", 520, 140));
-            cities.add(new City("Zlatograd", 300, 390));
-            cities.add(new City("Dobrich", 500, 100));
-            cities.add(new City("Belene,shortest path to here is a joke about Bai Tosho", 280, 80));
+//            cities.add(new City("Lom", 70, 60));
+//            cities.add(new City("Burgas", 490, 240));
+//            cities.add(new City("Varna", 520, 140));
+//            cities.add(new City("Zlatograd", 300, 390));
+//            cities.add(new City("Dobrich", 500, 100));
+//            cities.add(new City("Belene,shortest path to here is a joke about Bai Tosho", 280, 80));
 
         }
         currentRoute = findBestRoute(cities);
