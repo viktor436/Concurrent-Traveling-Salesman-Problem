@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 public class TspController {
@@ -57,8 +58,15 @@ public class TspController {
 //        TSPParallel tspSolver = new TSPParallel(distances);
 //        int[] res = tspSolver.returnResult();
 
-        TspCdl solver = new TspCdl(distances);
-        int[] res = solver.solve();
+//        TspCdl solver = new TspCdl(distances);
+//        int[] res = solver.solve();
+        TspCdlParallel solver = new TspCdlParallel(distances);
+        int[] res;
+        try {
+            res = solver.solve();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
 
         return res;
     }

@@ -47,7 +47,6 @@
     var cities = /*[[${cities}]]*/ [];
     var currentRoute = /*[[${currentRoute}]]*/ [];
 
-    // Draw the map.
     var canvas = document.getElementById('map');
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -59,7 +58,6 @@
         ctx.fillText(cities[i].name, cities[i].x + 10, cities[i].y - 10);
     }
 
-    // Draw the route.
     ctx.beginPath();
     ctx.moveTo(cities[currentRoute[0]].x, cities[currentRoute[0]].y);
     for (var i = 1; i < cities.length; i++) {
