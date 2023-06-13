@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Models.*;
+import com.example.demo.Workers.TSPParallel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @Controller
 public class TspController {
@@ -55,18 +55,8 @@ public class TspController {
     private int[] findBestRoute(List<City> cityList) throws InterruptedException {
         int[][] distances = calculateDistanceMatrix(cityList);
 
-//        TSPParallel tspSolver = new TSPParallel(distances);
-//        int[] res = tspSolver.returnResult();
-
-//        TspCdl solver = new TspCdl(distances);
-//        int[] res = solver.solve();
-        TspCdlParallel solver = new TspCdlParallel(distances);
-        int[] res;
-        try {
-            res = solver.solve();
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        }
+        TSPParallel tspSolver = new TSPParallel(distances);
+        int[] res = tspSolver.returnResult();
 
         return res;
     }

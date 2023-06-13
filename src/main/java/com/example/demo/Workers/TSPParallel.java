@@ -1,4 +1,4 @@
-package com.example.demo.Models;
+package com.example.demo.Workers;
 import java.util.concurrent.RecursiveTask;
 public class TSPParallel {
     private static int[][] distances;
