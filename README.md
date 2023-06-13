@@ -17,11 +17,9 @@ showTsp: Handles the GET request to display the Traveling Salesman Problem solut
 
 City.java: This class represents a city and contains information about its name, x-coordinate, and y-coordinate.
 
-TSPParallel.java: This class implements a parallel algorithm to solve the Traveling Salesman Problem. It uses the Fork/Join framework to divide the problem into smaller subproblems and solve them concurrently.
+TSPParallel.java: This class implements a parallel algorithm to solve the Traveling Salesman Problem
 
 index.html: This HTML file is the Thymeleaf template that defines the structure and content of the web page. It displays a canvas with a map, allows users to add cities, and shows information about the problem and its solution.
-
-tsp.js: This JavaScript file contains code that interacts with the HTML canvas element to draw the cities and the shortest route.
 
 ## Running the Project
 To run the project, follow these steps:
