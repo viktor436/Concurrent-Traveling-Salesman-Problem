@@ -7,20 +7,6 @@ This is an university Spring Boot project that solves the Traveling Salesman Pro
 You can try the project at:
 https://tspparallel.azurewebsites.net/
 
-
-## Project Structure
-The project consists of the following:
-
-TspController.java: This is the main controller class that handles the HTTP requests and responses. It contains the following methods:
-addCity: Handles the POST request to add a new city to the problem.
-showTsp: Handles the GET request to display the Traveling Salesman Problem solution on the web page.
-
-City.java: This class represents a city and contains information about its name, x-coordinate, and y-coordinate.
-
-TSPParallel.java: This class implements a parallel algorithm to solve the Traveling Salesman Problem
-
-index.html: This HTML file is the Thymeleaf template that defines the structure and content of the web page. It displays a canvas with a map, allows users to add cities, and shows information about the problem and its solution.
-
 ## Running the Project
 To run the project, follow these steps:
 
